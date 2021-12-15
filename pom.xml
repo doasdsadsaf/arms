@@ -9,6 +9,7 @@
     <version>1.0</version>
     <modules>
         <module>eureka-server</module>
+        <module>user-server</module>
         <!--<module>user-service</module>
         <module>order-service</module>
         <module>feign-api</module>
