@@ -1,0 +1,35 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: order-server
+  cloud:
+    nacos:
+      server-addr: 192.168.1.188:8848
+      # 添加集群
+      discovery:
+        cluster-name: HZ
+        # 添加命名空间
+        namespace: 46587682-2495-474d-b896-91b6a022dc6b
+        #配置是否是临时实例
+      #  ephemeral: false
+
+  #eureka:
+  #  client:
+  #    service-url:
+  #      defaultZone: http://127.0.0.1:8080/eureka
+  # 给user-server配置 ribbon 负载
+user-server:
+  ribbon:
+    # 配置负载均衡的规则
+   # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 配置为Nacos的负载均衡规则
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: user-server #指定接加载的服务名称
+#        如果有多个
+#      - user-server
+#      -
+
