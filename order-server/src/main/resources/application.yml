@@ -7,3 +7,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8080/eureka
+      # 给user-server配置 ribbon 负载
+user-server:
+  ribbon:
+    # 配置负载均衡的规则
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
