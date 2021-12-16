@@ -12,4 +12,11 @@ user-server:
   ribbon:
     # 配置负载均衡的规则
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: user-server #指定接加载的服务名称
+#        如果有多个
+#      - user-server
+#      -
 
