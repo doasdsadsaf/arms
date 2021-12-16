@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: user-server
+  profiles:
+    active: public
+  cloud:
+    nacos:
+      server-addr: 192.168.79.128:8848
+      config:
+        file-extension: ymal #文件后缀名
