@@ -2,10 +2,8 @@ package com.my.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.my.user.feign.OrderFeign;
-import org.checkerframework.checker.units.qual.A;
+import com.my.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.my.user.feign;
+package com.my.feign;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.cloud.openfeign.FeignClient;
