@@ -33,6 +33,7 @@
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <mysql.version>5.1.47</mysql.version>
         <mybatis.version>2.1.1</mybatis.version>
+        <alibaba.fastjson>1.2.78</alibaba.fastjson>
     </properties>
 
     <dependencyManagement>
@@ -72,6 +73,13 @@
                 <version>2.2.5.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba.fastjson}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

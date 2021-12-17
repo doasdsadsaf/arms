@@ -1,7 +1,12 @@
 package com.my.user.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.my.user.feign.OrderFeign;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,13 +16,29 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
+@RefreshScope
 public class UserController {
     // 注入nacos的配置
-    @NacosValue("${pattern.deteformat}")
+    @NacosValue("${pattern}")
     private String dateformat;
 
+    // 注入nacos的配置
+    @NacosValue("${pattern.envSharedValue}")
+    private String envSharedValue;
+    @Autowired
+    private OrderFeign orderFeign;
+
     @RequestMapping("now")
-    public String now(){
-        return LocalDate.now().format(DateTimeFormatter.ofPattern(dateformat, Locale.CHINA));
+    public String now() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern(envSharedValue, Locale.CHINA));
     }
+
+    @RequestMapping("show")
+    public String show() {
+        JSONObject json = new JSONObject();
+        json.put("name", "zhang");
+        return orderFeign.show(json).toJSONString();
+    }
+
+
 }
