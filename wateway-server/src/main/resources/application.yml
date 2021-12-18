@@ -12,3 +12,8 @@ spring:
           uri: lb://user-server # 路由目标地址
           predicates: #路由断言,判断前缀是user的才路由到user-server
             - Path=/user/**
+          filters: # 给为user-server的请求 添加过滤器
+            - AddRequestHeader=name,dongwei #在请求头里添加一个为name 为dongwei参数
+      default-filters:
+        - AddRequestHeader=name,dongwei #配置全局的过滤器
+

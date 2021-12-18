@@ -5,6 +5,7 @@ import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.my.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,8 @@ public class UserController {
     }
 
     @RequestMapping("show")
-    public String show() {
+    //@RequestHeader 获取请求头里的数据
+    public String show(@RequestHeader(value = "name", required = false) String name) {
         JSONObject json = new JSONObject();
         json.put("name", "zhang");
         return orderFeign.show(json).toJSONString();
