@@ -12,7 +12,9 @@
         <module>order-server</module>
         <module>user-server</module>
         <module>commons</module>
-        <module>wateway-server</module>
+        <module>gateway-server</module>
+        <module>consumer</module>
+        <module>untitled</module>
         <!--<module>user-service</module>
         <module>order-service</module>
         <module>feign-api</module>
@@ -83,6 +85,15 @@
                 <artifactId>fastjson</artifactId>
                 <version>${alibaba.fastjson}</version>
             </dependency>
+
+            <!-- rabbitmq -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
     <dependencies>
