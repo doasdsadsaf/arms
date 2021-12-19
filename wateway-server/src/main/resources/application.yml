@@ -16,4 +16,18 @@ spring:
             - AddRequestHeader=name,dongwei #在请求头里添加一个为name 为dongwei参数
       default-filters:
         - AddRequestHeader=name,dongwei #配置全局的过滤器
-
+      globalcors: #全局跨域处理
+        add-to-simple-url-handler-mapping: true #解决options请求拦截问题
+        cors-configurations: # 允许那些网站跨域请求
+          '[/**]':
+            allowedOrigins: #允许的ajax 的请求方式
+              - "http://localhost:8090"
+              - "https:www.baidu.com"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 36000 #这次跨域检测的有效期
