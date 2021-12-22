@@ -6,7 +6,9 @@ spring:
       # 添加集群
       discovery:
         cluster-name: HZ
-
+    sentinel:
+      transport:
+        dashboard: 192.168.1.188:8858
         # 添加命名空间
       #  namespace: 46587682-2495-474d-b896-91b6a022dc6b
         #配置是否是临时实例
@@ -21,6 +23,7 @@ spring:
   #  client:
   #    service-url:
   #      defaultZone: http://127.0.0.1:8080/eureka
+
   # 给user-server配置 ribbon 负载
 user-server:
   ribbon:

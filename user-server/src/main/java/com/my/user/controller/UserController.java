@@ -1,5 +1,6 @@
 package com.my.user.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.my.feign.OrderFeign;
@@ -23,12 +24,13 @@ public class UserController {
 
     // 注入nacos的配置
     @NacosValue("${pattern.envSharedValue}")
-    private String envSharedValue;
+    public String envSharedValue;
     @Autowired
     private OrderFeign orderFeign;
 
     @RequestMapping("now")
     public String now() {
+
         return LocalDate.now().format(DateTimeFormatter.ofPattern(envSharedValue, Locale.CHINA));
     }
 

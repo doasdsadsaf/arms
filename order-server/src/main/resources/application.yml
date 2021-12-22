@@ -13,7 +13,9 @@ spring:
 #        namespace: 46587682-2495-474d-b896-91b6a022dc6b
         #配置是否是临时实例
       #  ephemeral: false
-
+    sentinel:
+      transport:
+        dashboard: 192.168.1.188:8858
   #eureka:
   #  client:
   #    service-url:
