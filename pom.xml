@@ -14,7 +14,6 @@
         <module>commons</module>
         <module>gateway-server</module>
         <module>consumer</module>
-        <module>untitled</module>
         <!--<module>user-service</module>
         <module>order-service</module>
         <module>feign-api</module>
@@ -34,7 +33,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <mysql.version>5.1.47</mysql.version>
         <mybatis.version>2.1.1</mybatis.version>
         <alibaba.fastjson>1.2.78</alibaba.fastjson>
@@ -102,4 +101,17 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

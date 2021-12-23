@@ -50,3 +50,6 @@ feign:
     enabled: true # 支持HttpClient的开关
     max-connections: 200 #线程最大连接
     max-connections-per-route: 50 #单个接口最大连接
+  sentinel:
+    # 开启feign对sentinel的支持
+    enabled: true

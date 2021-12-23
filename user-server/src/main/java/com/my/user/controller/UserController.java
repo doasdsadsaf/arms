@@ -16,6 +16,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
+// nacos配置动态刷新
 @RefreshScope
 public class UserController {
     // 注入nacos的配置
@@ -25,6 +26,7 @@ public class UserController {
     // 注入nacos的配置
     @NacosValue("${pattern.envSharedValue}")
     public String envSharedValue;
+
     @Autowired
     private OrderFeign orderFeign;
 
