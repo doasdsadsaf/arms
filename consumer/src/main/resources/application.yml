@@ -1,18 +1,21 @@
 server:
-  port: 8081
+  port: 8091
 spring:
+  application:
+    name: consumer
   cloud:
     nacos:
+      server-addr: 192.168.1.188:8848
       # 添加集群
       discovery:
         cluster-name: HZ
+        # 添加命名空间
+#        namespace: 46587682-2495-474d-b896-91b6a022dc6b
+        #配置是否是临时实例
+      #  ephemeral: false
     sentinel:
       transport:
         dashboard: 192.168.1.188:8858
-        # 添加命名空间
-      #  namespace: 46587682-2495-474d-b896-91b6a022dc6b
-        #配置是否是临时实例
-      #  ephemeral: false
   rabbitmq:
     host: 192.168.1.188
     port: 5672
@@ -23,12 +26,11 @@ spring:
   #  client:
   #    service-url:
   #      defaultZone: http://127.0.0.1:8080/eureka
-
   # 给user-server配置 ribbon 负载
 user-server:
   ribbon:
     # 配置负载均衡的规则
-    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+   # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
     # 配置为Nacos的负载均衡规则
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
 ribbon:
@@ -38,18 +40,4 @@ ribbon:
 #        如果有多个
 #      - user-server
 #      -
-# 配置feign 打印最全日志
-#feign:
-#  client:
-#    config:
-#      default:
-#        loggerLevel: FULL
 
-feign:
-  httpclient:
-    enabled: true # 支持HttpClient的开关
-    max-connections: 200 #线程最大连接
-    max-connections-per-route: 50 #单个接口最大连接
-  sentinel:
-    # 开启feign对sentinel的支持
-    enabled: true
