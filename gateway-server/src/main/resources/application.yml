@@ -5,7 +5,7 @@ spring:
     name: gateway-server
   cloud:
     nacos:
-      server-addr: 192.168.1.188:8848
+      server-addr: 124.223.2.193:8848
     gateway:
       routes: # 网关路由配置
         - id: user-server # 路由id 自定义 唯一即可

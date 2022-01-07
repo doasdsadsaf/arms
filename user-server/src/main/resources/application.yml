@@ -8,17 +8,17 @@ spring:
         cluster-name: HZ
     sentinel:
       transport:
-        dashboard: 192.168.1.188:8858
+        dashboard: 124.223.2.193:8858
         # 添加命名空间
       #  namespace: 46587682-2495-474d-b896-91b6a022dc6b
         #配置是否是临时实例
       #  ephemeral: false
   rabbitmq:
-    host: 192.168.1.188
+    host: 124.223.2.193
     port: 5672
     virtual-host: /
-    username: guest
-    password: guest
+    username: admin
+    password: admin
   #eureka:
   #  client:
   #    service-url:
@@ -53,3 +53,11 @@ feign:
   sentinel:
     # 开启feign对sentinel的支持
     enabled: true
+
+file:
+  host: 124.223.2.193
+  port: 21
+  username: file
+  password: Xingyun2022
+  basePath: /ftpdata/files
+  returnUrl: http://124.223.2.193/files
