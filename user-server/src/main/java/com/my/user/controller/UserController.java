@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @RequestMapping("show")
-    //@RequestHeader 获取请求头里的数据
+    //获取请求头里的数据
     public String show(@RequestHeader(value = "name", required = false) String name) {
         JSONObject json = new JSONObject();
         json.put("name", "zhang");
