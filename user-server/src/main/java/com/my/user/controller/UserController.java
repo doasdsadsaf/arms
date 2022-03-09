@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.my.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +28,15 @@ public class UserController {
     @NacosValue("${pattern.envSharedValue}")
     public String envSharedValue;
 
+    @NacosValue("${name}")
+    private String name;
+
     @Autowired
     private OrderFeign orderFeign;
 
     @RequestMapping("now")
     public String now() {
-
+        System.out.println(name);
         return LocalDate.now().format(DateTimeFormatter.ofPattern(envSharedValue, Locale.CHINA));
     }
 
