@@ -21,7 +21,7 @@ public class SendMsgController {
      */
     @GetMapping("/sendmsg")
     public String sendMsg(@RequestParam String msg, @RequestParam String key){
-
+        rabbitTemplate​.receiveAndConvert();
         /**
          * 发送消息
          * 参数一：交换机名称

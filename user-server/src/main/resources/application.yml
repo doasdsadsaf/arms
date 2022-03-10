@@ -2,10 +2,10 @@ server:
   port: 8081
 spring:
   cloud:
-#    nacos:
-#      # 添加集群
-#      discovery:
-#        cluster-name: HZ
+    nacos:
+      # 添加集群
+      discovery:
+        cluster-name: HZ
     sentinel:
       transport:
         dashboard: 124.223.2.193:8858
