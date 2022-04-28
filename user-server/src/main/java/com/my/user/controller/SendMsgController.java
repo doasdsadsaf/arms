@@ -3,7 +3,10 @@ package com.my.user.controller;
 import com.my.user.config.RabbitMQConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -16,9 +19,10 @@ public class SendMsgController {
     //注入RabbitMQ的模板
     @Autowired
     private RabbitTemplate rabbitTemplate​;
-    /**
-     * 测试
-     */
+
+
+
+
     @GetMapping("/sendmsg")
     public String sendMsg(@RequestParam String msg, @RequestParam String key){
         rabbitTemplate​.receiveAndConvert();
@@ -32,4 +36,10 @@ public class SendMsgController {
         // 返回消息
         return "发送消息成功！";
     }
+
+    public static void main(String[] args) {
+        String s = "Gone with the wind";
+        String standard = s.toUpperCase();
+    }
+
 }

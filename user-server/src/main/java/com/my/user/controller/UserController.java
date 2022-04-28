@@ -4,12 +4,12 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.my.feign.OrderFeign;
+import org.apache.tomcat.util.threads.ThreadPoolExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,6 +34,9 @@ public class UserController {
     @Autowired
     private OrderFeign orderFeign;
 
+    @Autowired
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
     @RequestMapping("now")
     public String now() {
         System.out.println(name);
@@ -48,5 +51,19 @@ public class UserController {
         return orderFeign.show(json).toJSONString();
     }
 
+
+
+    @PostMapping
+    @RequestMapping
+    @ResponseBody
+    public String thread(){
+        threadPoolTaskExecutor.execute(()->{
+            System.out.println("222");
+        });
+        System.out.print("11");
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
+        threadPoolExecutor.execute();
+        return "1";
+    }
 
 }
